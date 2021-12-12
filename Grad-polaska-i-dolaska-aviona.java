@@ -14,26 +14,19 @@ public class FindDepartureAndDestination {
         
         for(int i=0;i<passes.size();i++)
         {
-            List<String> path = passes.get(i);
-            src.add(path.get(0));
-            dest.add(path.get(1));
+            src.add(passes.get(i).get(0) );
+            dest.add(passes.get(i).get(1));
            
         }
          
         Set<String> intersection = new HashSet<String>(src);
         intersection.retainAll(dest);
         
-        
         src.removeAll(intersection);
         dest.removeAll(intersection);
-        
-        String[] s = src.toArray(new String[0]);
-        String[] d = dest.toArray(new String[0]);
-        
-        String[] r = new String[2];
-        r[0] = s[0];
-        r[1] = d[0];
-        
+
+        String[] r = {src.toArray(new String[0])[0] , dest.toArray(new String[0])[0] };
+
         return r;
         
     }
