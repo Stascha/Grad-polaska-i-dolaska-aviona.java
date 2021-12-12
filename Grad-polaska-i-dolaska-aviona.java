@@ -7,8 +7,6 @@ public class FindDepartureAndDestination {
 
     public static String[] find(List<List<String>> passes) 
     {
-       
-       
         Set<String> src  = new HashSet<String> (); 
         Set<String> dest = new HashSet<String> (); 
         
@@ -16,7 +14,6 @@ public class FindDepartureAndDestination {
         {
             src.add(passes.get(i).get(0) );
             dest.add(passes.get(i).get(1));
-           
         }
          
         Set<String> intersection = new HashSet<String>(src);
@@ -25,15 +22,14 @@ public class FindDepartureAndDestination {
         src.removeAll(intersection);
         dest.removeAll(intersection);
 
-        String[] r = {src.toArray(new String[0])[0] , dest.toArray(new String[0])[0] };
+        String[] r = { src.toArray(new String[0])[0] , dest.toArray(new String[0])[0] };
 
         return r;
         
     }
 
-    public static void main(String[] args) {
-        
-        
+    public static void main(String[] args) 
+    {
         List<List<String>> boardingPass = new ArrayList<>();
         
         List<String> bp1 = new ArrayList<>();
@@ -64,5 +60,6 @@ public class FindDepartureAndDestination {
         
         r = find(boardingPass);
         System.out.println("Departure: " + r[0] + ", Destination: " + r[1]);
+        
     }
 }
