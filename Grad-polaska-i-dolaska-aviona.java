@@ -1,30 +1,28 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
-public class FindDepartureAndDestination {
+
+public class Main {
 
     public static String[] find(List<List<String>> passes) 
     {
-        Set<String> src  = new HashSet<String> (); 
-        Set<String> dest = new HashSet<String> (); 
-        
-        for(int i=0;i<passes.size();i++)
-        {
-            src.add(passes.get(i).get(0) );
-            dest.add(passes.get(i).get(1));
+        Set<String> src  = new HashSet<>(); 
+        Set<String> dest = new HashSet<>(); 
+    
+        for (List<String> pass : passes) {
+            src.add(pass.get(0));
+            dest.add(pass.get(1));
         }
-         
-        Set<String> intersection = new HashSet<String>(src);
+    
+        Set<String> intersection = new HashSet<>(src);
         intersection.retainAll(dest);
-        
+    
         src.removeAll(intersection);
         dest.removeAll(intersection);
 
-        String[] r = { src.toArray(new String[0])[0] , dest.toArray(new String[0])[0] };
-
-        return r;
+        String departure = src.iterator().next();
+        String destination = dest.iterator().next();
+    
+        return new String[] {departure, destination};
         
     }
 
@@ -59,7 +57,7 @@ public class FindDepartureAndDestination {
         String[] r;
         
         r = find(boardingPass);
-        System.out.println("Departure: " + r[0] + ", Destination: " + r[1]);
+        System.out.println("Departure: " + r[0] + " --> Destination: " + r[1]);
         
     }
 }
